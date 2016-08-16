@@ -1,7 +1,6 @@
 package com.jaysen.daggar2_tests.dagger;
 
 import javax.inject.Named;
-import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
@@ -30,17 +29,20 @@ public class ApiModule {
 
     @Provides
     @Named("romantic")
-    Pump providePump(Heater heater) {
+    Pump providePump(@Named("manual") Heater heater) {
         return new RomanticPump(heater);
     }
 
     @Provides
     @CoffeeHeaterScope
+    @Named("electric")
     Heater provideHeater() {
         return new ElectricHeater();
     }
+
     @Provides
-    @Singleton
+    @CoffeeHeaterScope
+    @Named("manual")
     Heater provideManualHeater() {
         return new ManulHeater();
     }

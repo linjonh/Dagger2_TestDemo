@@ -17,7 +17,7 @@ public class CoffeeMaker {
     Pump mPump;
 
     @Inject
-    CoffeeMaker(@CoffeeHeaterScope Lazy<Heater> heaterLazy, @Named("romantic") Pump pump) {
+    CoffeeMaker(@Named("manual") Lazy<Heater> heaterLazy, @Named("romantic") Pump pump) {
         this.mHeater = heaterLazy;
         this.mPump = pump;
     }
